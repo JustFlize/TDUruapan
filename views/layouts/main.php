@@ -24,6 +24,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <?php $this->registerCssFile("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"); ?>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
