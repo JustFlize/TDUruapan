@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use app\models\Usuarios;
-use app\controllers\UsuariosSearch;
+use app\models\LoginForm; // importar el modelo LoginForm
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * UsuariosController implements the CRUD actions for Usuarios model.
@@ -130,5 +131,27 @@ class UsuariosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    // **Agregar la acción de login**  
+    public function actionLogin()
+    {
+        // Si el usuario ya está autenticado, redirige al home
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome(); // Redirige a la página principal si ya está logueado
+        }
+
+        // Crea un nuevo modelo de LoginForm
+        $model = new LoginForm();
+
+        // Si el formulario es enviado y los datos son válidos, inicia sesión
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack(); // Regresa a la página anterior
+        }
+
+        // Si no se envió el formulario o la validación falló, renderiza el formulario de login
+        return $this->render('login', [
+            'model' => $model, // Pasa el modelo al formulario
+        ]);
     }
 }
