@@ -2,52 +2,93 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+use yii\helpers\Html;
+
+$this->title = 'Bienvenido a TDUruapan';
 ?>
-<div class="site-index">
-
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+<div class="container mx-auto p-4">
+    <!-- Bienvenida -->
+    <div class="bg-blue-500 text-white text-center py-6 rounded-2xl shadow-md">
+        <h1 class="text-3xl font-bold">Bienvenido</h1>
+        <p class="text-lg">Sistema de Trámites de la Dirección de Desarrollo Urbano</p>
     </div>
 
-    <div class="body-content">
+    <!-- Información General -->
+    <div class="mt-6 p-4 bg-gray-100 rounded-2xl shadow-md">
+        <h2 class="text-xl font-semibold">Información General</h2>
+        <p class="text-gray-700">
+            La Dirección de Desarrollo Urbano se encarga de regular y administrar los trámites relacionados con el uso de suelo, construcción y ordenamiento urbano en Uruapan.
+        </p>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+    <!-- Notificaciones -->
+    <div class="mt-6 p-4 bg-yellow-100 rounded-2xl shadow-md">
+        <h2 class="text-xl font-semibold">Notificaciones</h2>
+        <ul class="list-disc list-inside text-gray-700">
+            <li>No hay notificaciones recientes.</li>
+        </ul>
+    </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    <!-- Trámites Disponibles -->
+    <div class="mt-6">
+        <h2 class="text-xl font-semibold">Trámites Disponibles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+            <?php 
+            $tramites = [
+                [
+                    'titulo' => 'Constancia de Alineamiento',
+                    'descripcion' => 'Asigna alineamiento de la vía pública para facilitar su localización urbana.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/alineamiento']
+                ],
+                [
+                    'titulo' => 'Constancia de Número Oficial',
+                    'descripcion' => 'Asigna el número oficial a un predio para su correcta identificación.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/numerooficial']
+                ],
+                [
+                    'titulo' => 'Licencia o Registro de Construcción',
+                    'descripcion' => 'Autoriza la construcción de un inmueble.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/construccion']
+                ],
+                [
+                    'titulo' => 'Licencia de Uso de Suelo',
+                    'descripcion' => 'Acredita el uso permitido de un predio.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/usosuelo']
+                ],
+                [
+                    'titulo' => 'Autorización de Fusión y/o Subdivisión',
+                    'descripcion' => 'Divide o fusiona predios sin alterar la vía pública.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/fusion']
+                ],
+                [
+                    'titulo' => 'Anuencia de Uso y Ocupación de Obra',
+                    'descripcion' => 'Permite el uso de un inmueble después de construirse.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/ocupacion']
+                ],
+                [
+                    'titulo' => 'Constancia de Zonificación Urbana',
+                    'descripcion' => 'Indica los usos permitidos de un inmueble.',
+                    'tiempo' => '10 días hábiles',
+                    'url' => ['tramite/zonificacion']
+                ],
+            ];
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            foreach ($tramites as $tramite): ?>
+                <div class="p-4 bg-white shadow-md rounded-2xl">
+                    <h3 class="text-lg font-semibold"><?= Html::encode($tramite['titulo']) ?></h3>
+                    <p class="text-gray-700"><?= Html::encode($tramite['descripcion']) ?></p>
+                    <p class="text-gray-500 text-sm">Tiempo de respuesta: <?= Html::encode($tramite['tiempo']) ?></p>
+                    <div class="mt-2">
+                        <?= Html::a('Iniciar trámite', $tramite['url'], ['class' => 'bg-blue-500 text-white px-4 py-2 rounded-lg text-sm']) ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-
     </div>
 </div>
