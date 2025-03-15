@@ -124,13 +124,7 @@ $this->title = 'Bienvenido a TDUruapan';
                         'url' => ['tramite/numerooficial'],
                         'imagen' => Url::to('@web/images/form-icon.png')
                     ],
-                    [
-                        'titulo' => 'Constancia de Número Oficial',
-                        'descripcion' => 'Asigna el número oficial a un predio para su correcta identificación.',
-                        'tiempo' => '10 días hábiles',
-                        'url' => ['tramite/numerooficial'],
-                        'imagen' => Url::to('@web/images/form-icon.png')
-                    ],
+                    
                     [
                         'titulo' => 'Licencia o Registro de Construcción',
                         'descripcion' => 'Autoriza la construcción de un inmueble.',
