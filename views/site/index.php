@@ -65,24 +65,7 @@ $this->title = 'Bienvenido a TDUruapan';
         </div>
 
         <!-- Información de Contacto -->
-        <div class="mt-8 p-6 bg-purple-50 rounded-2xl shadow-md">
-            <h2 class="text-2xl font-semibold mb-4">Información de Contacto</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <i class="fas fa-map-marker-alt text-3xl text-purple-600 mb-2"></i>
-                    <p class="text-gray-700">Av. Principal #123, Col. Centro, Uruapan, Michoacán.</p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-phone-alt text-3xl text-purple-600 mb-2"></i>
-                    <p class="text-gray-700">(452) 123 4567</p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-envelope text-3xl text-purple-600 mb-2"></i>
-                    <p class="text-gray-700">contacto@ddu-uruapan.gob.mx</p>
-                </div>
-            </div>
-        </div>
-
+         
         <!-- Mapa de Ubicación -->
         <div class="mt-8 p-6 bg-white rounded-2xl shadow-md">
             <h2 class="text-2xl font-semibold mb-4 text-center">¿Dónde estamos?</h2>
@@ -114,17 +97,17 @@ $this->title = 'Bienvenido a TDUruapan';
                         'titulo' => 'Constancia de Alineamiento',
                         'descripcion' => 'Asigna alineamiento de la vía pública para facilitar su localización urbana.',
                         'tiempo' => '10 días hábiles',
-                        'url' => ['tramite/alineamiento'],
+                        'url' => ['tramite/inciar', 'tipo' => 1],
                         'imagen' => Url::to('@web/images/form-icon.png') // Ruta de la imagen
                     ],
                     [
                         'titulo' => 'Constancia de Número Oficial',
                         'descripcion' => 'Asigna el número oficial a un predio para su correcta identificación.',
                         'tiempo' => '10 días hábiles',
-                        'url' => ['tramite/numerooficial'],
+                        'url' => ['tramite/iniciar', 'tipo' => 2], // Corregido: 'tramite/iniciar' y agregado parámetro 'tipo'
                         'imagen' => Url::to('@web/images/form-icon.png')
                     ],
-                    
+
                     [
                         'titulo' => 'Licencia o Registro de Construcción',
                         'descripcion' => 'Autoriza la construcción de un inmueble.',
@@ -179,24 +162,43 @@ $this->title = 'Bienvenido a TDUruapan';
             </div>
         </div>
 
-        
+    </div>
 
-        <!-- Script para búsqueda dinámica -->
-        <script>
-            document.getElementById('search').addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const tramites = document.querySelectorAll('#tramites-grid > div');
+    <!-- Información de Contacto -->
+    <div class="mt-8 p-6 bg-purple-50 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Información de Contacto</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center">
+                <i class="fas fa-map-marker-alt text-3xl text-purple-600 mb-2"></i>
+                <p class="text-gray-700">C. Atenas #2248, La Joyita, 60170, Uruapan, Michoacán.</p>
+            </div>
+            <div class="text-center">
+                <i class="fas fa-phone-alt text-3xl text-purple-600 mb-2"></i>
+                <p class="text-gray-700">(452) 123 4567</p>
+            </div>
+            <div class="text-center">
+                <i class="fas fa-envelope text-3xl text-purple-600 mb-2"></i>
+                <p class="text-gray-700">contacto@uruapan.gob.mx</p>
+            </div>
+        </div>
+    </div>
 
-                tramites.forEach(tramite => {
-                    const title = tramite.querySelector('h3').textContent.toLowerCase();
-                    if (title.includes(searchTerm)) {
-                        tramite.style.display = 'block';
-                    } else {
-                        tramite.style.display = 'none';
-                    }
-                });
+    <!-- Script para búsqueda dinámica -->
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tramites = document.querySelectorAll('#tramites-grid > div');
+
+            tramites.forEach(tramite => {
+                const title = tramite.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    tramite.style.display = 'block';
+                } else {
+                    tramite.style.display = 'none';
+                }
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>

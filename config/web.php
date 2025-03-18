@@ -4,9 +4,12 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'TDUruapan',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'name' => 'TDUruapan',
+    'language' => 'es-MX', // Configura el idioma (Español - México)
+    'timeZone' => 'America/Mexico_City', // Zona horaria de México
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -42,14 +45,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
+
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'enablePrettyUrl' => true, // Habilitar URLs amigables
+            'showScriptName' => false, // Ocultar "index.php" en la URL
             'rules' => [
+                'tramite/iniciar/<tipo:\d+>' => 'tramite/iniciar', // Ruta para el controlador Tramite
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];
