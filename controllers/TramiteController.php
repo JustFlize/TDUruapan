@@ -89,4 +89,9 @@ class TramiteController extends Controller
             }
         }
     }
+
+    public function actionPrueba()
+    {
+        return "¡La acción de prueba funciona!";
+    }
 }

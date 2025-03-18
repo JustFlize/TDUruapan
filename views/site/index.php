@@ -1,5 +1,9 @@
 <?php
 
+echo "Ruta solicitada: " . $_SERVER['REQUEST_URI'];
+exit;
+
+
 /** @var yii\web\View $this */
 
 use yii\helpers\Html;
@@ -65,7 +69,7 @@ $this->title = 'Bienvenido a TDUruapan';
         </div>
 
         <!-- Información de Contacto -->
-         
+
         <!-- Mapa de Ubicación -->
         <div class="mt-8 p-6 bg-white rounded-2xl shadow-md">
             <h2 class="text-2xl font-semibold mb-4 text-center">¿Dónde estamos?</h2>
@@ -97,7 +101,7 @@ $this->title = 'Bienvenido a TDUruapan';
                         'titulo' => 'Constancia de Alineamiento',
                         'descripcion' => 'Asigna alineamiento de la vía pública para facilitar su localización urbana.',
                         'tiempo' => '10 días hábiles',
-                        'url' => ['tramite/inciar', 'tipo' => 1],
+                        'url' => ['tramite/iniciar', 'tipo' => 1],
                         'imagen' => Url::to('@web/images/form-icon.png') // Ruta de la imagen
                     ],
                     [

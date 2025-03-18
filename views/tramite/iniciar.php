@@ -1,13 +1,10 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $form = ActiveForm::begin([
     'options' => ['enctype' => 'multipart/form-data'],
-]);
-
-?>
+]); ?>
 
 <!-- Datos del Propietario -->
 <fieldset>

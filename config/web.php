@@ -46,14 +46,15 @@ $config = [
         ],
         'db' => $db,
 
-
         'urlManager' => [
             'enablePrettyUrl' => true, // Habilitar URLs amigables
             'showScriptName' => false, // Ocultar "index.php" en la URL
             'rules' => [
                 'tramite/iniciar/<tipo:\d+>' => 'tramite/iniciar', // Ruta para el controlador Tramite
+                'tramite/prueba' => 'tramite/prueba',
             ],
         ],
+
 
     ],
     'params' => $params,

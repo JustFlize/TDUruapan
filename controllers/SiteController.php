@@ -126,4 +126,9 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionIniciarTramite()
+    {
+        return $this->render('iniciar-tramite');  // Asegúrate de que esta vista exista
+    }
 }
